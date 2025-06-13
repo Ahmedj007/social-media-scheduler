@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+require('./utils/scheduler')
 
 const connectDB = require('./config/db');
 
