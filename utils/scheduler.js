@@ -3,7 +3,7 @@ const Post =require('../models/Post');
 
 cron.schedule('* * * * *', async () => {
     const now = new Date();
-    const posts = await post.find({ status: 'scheduled', scheduleDate: {$lte: now}});
+    const posts = await Post.find({ status: 'scheduled', scheduleDate: {$lte: now}});
     for (const post of posts) {
         post.status = 'posted';
         await post.save();
