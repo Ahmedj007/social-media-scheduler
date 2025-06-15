@@ -20,7 +20,7 @@ const generateToken = (id) => {
 // };
 
 //Register user
-exports. registerUser = async (req, res) => {
+exports.registerUser = async (req, res) => {
     try{
         const {username, email, password} = req.body;
         // Check if user already exists
