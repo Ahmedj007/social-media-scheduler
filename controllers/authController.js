@@ -57,7 +57,12 @@ exports.loginUser = async (req, res) => {
         //check for user email
         const user = await User.findOne({email});
 
-        if (user && (await User.comparePassword(password))){
+        if (!user) {
+            return res.status(401).json({error: 'Invalid Credentials'});
+        }
+
+        // Use the instance method on the user object, not the model
+        if (await user.comparePassword(password)){
             res.json({
                 _id: user._id,
                 username: user.username,
@@ -75,7 +80,7 @@ exports.loginUser = async (req, res) => {
 //get user profile
 exports.getUserProfile = async (req, res) => {
     try{
-        const user = await user.findById(req.user._id).select('-password');
+        const user = await User.findById(req.user._id).select('-password');
         if (user){
             res.json(user);
         } else {
