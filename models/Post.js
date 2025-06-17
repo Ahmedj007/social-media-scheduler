@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema({
     platform: {
         type: String,
         required: true,
-        enum: ['instagram', 'facebook', 'tiktok', 'youtube', 'youtube_shorts', 'twitter']
+        enum: ['instagram', 'facebook', 'tiktok', 'twitter']
     },
     status: {
         type: String,
