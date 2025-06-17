@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     socialAccounts: [{
         platform:{
             type: String,
-            enum: ['instagram', 'facebook', 'tiktok', 'twitter']
+            enum: ['instagram', 'tiktok', 'twitter']
         },
         accessToken: String,
         refreshToken: String,
