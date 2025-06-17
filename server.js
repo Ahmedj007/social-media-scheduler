@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Import routes
-const authRoutes = require('./routes/authentication');
+// const authRoutes = require('./routes/authentication');
 const postRoutes = require('./routes/posts');
 
 // Routes
@@ -32,7 +32,7 @@ app.get('/',(req,res)=>{
 });
 
 // Use routes
-app.use('/api/users', authRoutes);
+// app.use('/api/users', authRoutes);
 app.use('/api/posts', postRoutes);
 
 // Set port from environment or default to 3000

@@ -5,30 +5,36 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
-    scheduledDate:{
+    scheduledDate: {
         type: Date,
         required: true
     },
-    platform: {
+    platforms: [{
         type: String,
-        required: true,
-        enum: ['instagram', 'tiktok', 'twitter']
+        enum: ['instagram', 'tiktok', 'x'],
+        required: true
+    }],
+    contentType: {
+        type: String,
+        enum: ['story', 'post', 'reel', 'short', 'media', 'multiple_media', 'text'],
+        required: true
     },
     status: {
         type: String,
         default: 'scheduled',
-        enum: ['scheduled', 'posted', 'failed']
+        enum: ['scheduled', 'posted', 'failed', 'deleted', 'updated']
     },
-    mediaUrl: {
-        type: String,
-        required: false
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    }
+    mediaUrl: String,
+    videoDuration: Number, // in seconds
+    caption: String,
+    activityLog: [
+        {
+            action: String, // posted, deleted, updated
+            platform: String,
+            timestamp: Date,
+            details: String
+        }
+    ]
 }, {
     timestamps: true
 });
